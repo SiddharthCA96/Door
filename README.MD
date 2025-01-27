@@ -1,0 +1,11 @@
+- MEDIUM CLONE
+- React in the frontend
+- Cloudflare workers in the backend
+- zod as the validation library, type inference for the frontend types
+- Typescript as the language
+- Prisma as the ORM, with connection pooling
+- Postgres as the database
+- jwt for authentication
+
+- Initialize a hono based cloudflare workers apps using  npm create hono@latest
+- Create the routes
