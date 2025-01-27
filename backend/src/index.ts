@@ -1,4 +1,6 @@
 import { Hono } from "hono";
+import { PrismaClient } from '@prisma/client/edge'
+import { withAccelerate } from '@prisma/extension-accelerate'
 
 const app = new Hono();
 
@@ -14,6 +16,7 @@ app.post("/api/v1/signin", (c) => {
 app.post("/api/v1/signup", (c) => {
   return c.text("signup route");
 });
+
 
 //blog post route
 app.post("/api/v1/blog", (c) => {

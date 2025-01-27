@@ -9,3 +9,13 @@
 
 - Initialize a hono based cloudflare workers apps using  npm create hono@latest
 - Create the routes
+- Get the DATABASE_URL FROM THE Accelerate platform
+- Initialize prisma in your project
+- npm i prisma
+- npx prisma init
+- Initialize the schema(write the schema code in schema.prisma file inside prisma folder)
+- Migrate your database :npx prisma migrate dev --name init_schema (it generates the automatic migration)
+- Generate the prisma client :npx prisma generate --no-engine (used for serverlsess backends)
+- Add the accelerate extension :npm install @prisma/extension-accelerate
+- Iitialize the prisma client in index.ts
+
