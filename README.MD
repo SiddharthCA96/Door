@@ -15,7 +15,7 @@
 - npx prisma init
 - Initialize the schema(write the schema code in schema.prisma file inside prisma folder)
 - Migrate your database :npx prisma migrate dev --name init_schema (it generates the automatic migration)
-- Generate the prisma client :npx prisma generate --no-engine (used for serverlsess backends)
+- Generate the prisma client :npx prisma generate --no-engine (used for serverless backends)
 - Add the accelerate extension :npm install @prisma/extension-accelerate
 - Iitialize the prisma client in index.ts
-
+- Write the logic for signup and return jwt (use hono/jwt for this)
