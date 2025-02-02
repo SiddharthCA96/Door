@@ -23,3 +23,4 @@
 - Create the middleware for all the blog routes
 - Create the route for blog creation
 - Rotes for update,get a blog get all blogs
+- Add zod validation (firstly npm i zod) by creating the common module and publish it to npm and use it in both back and front end
