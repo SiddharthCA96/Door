@@ -2,8 +2,7 @@ import { Hono } from "hono";
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { sign } from "hono/jwt";
-import {signupInput} from "@siddharthsingh/door-common"
-
+import { signupInput, signinInput } from "@siddharthsingh/door-common";
 
 //pass the types of env as a generic (this is the way provided by hono to give the types of environment variables)
 export const userRouter = new Hono<{
@@ -14,7 +13,6 @@ export const userRouter = new Hono<{
   };
 }>();
 
-
 //signin route
 userRouter.post("/signup", async (c) => {
   const prisma = new PrismaClient({
@@ -23,7 +21,14 @@ userRouter.post("/signup", async (c) => {
 
   //get the request body from the context
   const body = await c.req.json();
+  const { success } = signupInput.safeParse(body);
 
+  if (!success) {
+    c.status(411);
+    return c.json({
+      message: "Please Provide valid inputs",
+    });
+  }
   //create a new user
   try {
     const user = await prisma.user.create({
@@ -43,7 +48,7 @@ userRouter.post("/signup", async (c) => {
   }
 });
 
-//sign up route
+//sign in route
 userRouter.post("/signin", async (c) => {
   //initialize prisma
   const prisma = new PrismaClient({
@@ -51,7 +56,13 @@ userRouter.post("/signin", async (c) => {
   }).$extends(withAccelerate());
   //get the body
   const body = await c.req.json();
-
+  const { success } = signinInput.safeParse(body);
+  if (!success) {
+    c.status(411);
+    return c.json({
+      message: "Please Provide valid inputs",
+    });
+  }
   //find the user
   const user = await prisma.user.findUnique({
     where: {
