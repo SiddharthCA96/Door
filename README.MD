@@ -19,3 +19,7 @@
 - Add the accelerate extension :npm install @prisma/extension-accelerate
 - Iitialize the prisma client in index.ts
 - Write the logic for signup and return jwt (use hono/jwt for this)
+- Write the logic for the signin 
+- Create the middleware for all the blog routes
+- Create the route for blog creation
+- Rotes for update,get a blog get all blogs
